@@ -31,11 +31,10 @@ struct ControlView: View {
                 InfoView(showInfo: $showInfo)
             })
             }
-            .frame(maxWidth: 500)
-            .padding()
-            .background(Color.black.opacity(0.25))
+//            .frame(maxWidth: 500)
+//            .padding()
+//            .background(Color.black.opacity(0.99))
         }
-        Spacer()
         }
     }
 
@@ -55,7 +54,7 @@ struct ControllButton: View {
                 .foregroundColor(.white)
                 .buttonStyle(PlainButtonStyle())
         }
-        .frame(width: 50, height: 50)
+//        .frame(width: 30 , height: 30)
         
     }
 }

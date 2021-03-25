@@ -10,7 +10,7 @@ let tabs = [
     Page(image: "look", title: "Step 1: Look Around", text: "Use the rear camera to explore. Try to find people nearby."),
     Page(image: "person", title: "Step 2: Facial Recongition", text: "Once you have found a person we will scan their face and pickup details like age."),
     Page(image: "phone", title: "Step 3: Analyzation", text: "Using the person's age we can estimate how many phones the person has used."),
-    Page(image: "garbage", title: "How are they Disposed of?", text: "Many of these phones are thrown away and it is becoming a problem. Let us show you why."),
+    Page(image: "garbage", title: "Recycled?", text: "Many of these phones are thrown away and it is becoming a problem. Let us show you why."),
 ]
 
 struct Page{

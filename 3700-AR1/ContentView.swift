@@ -9,8 +9,21 @@ import SwiftUI
 import RealityKit
 
 struct ContentView : View {
+    @State private var isWalkthroughViewShowing = true
+    @State private var showInfo: Bool = false
+    
     var body: some View {
-        return ARViewContainer().edgesIgnoringSafeArea(.all)
+        Group{
+            if isWalkthroughViewShowing{
+                WalkthroughView(isWalkthroughViewShowing: $isWalkthroughViewShowing)
+            } else {
+                ARViewContainer().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    
+                ControlView(showInfo: $showInfo)
+                    
+                
+            }
+        }
     }
 }
 

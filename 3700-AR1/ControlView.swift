@@ -19,10 +19,7 @@ struct ControlView: View {
     @Binding var showInfo: Bool
 
     var body: some View {
-        ZStack {
-            HStack{
-            Spacer()
-            // Info Button
+
             ControllButton(systemIconName: "info.circle") {
                 print("Info Button Pressed")
                 self.showInfo.toggle()
@@ -30,11 +27,11 @@ struct ControlView: View {
                 // InfoView
                 InfoView(showInfo: $showInfo)
             })
-            }
-//            .frame(maxWidth: 500)
-//            .padding()
-//            .background(Color.black.opacity(0.99))
-        }
+            
+            .frame(maxWidth: 500)
+            .padding(10)
+            .background(Color.black.opacity(0.25))
+
         }
     }
 
@@ -54,8 +51,7 @@ struct ControllButton: View {
                 .foregroundColor(.white)
                 .buttonStyle(PlainButtonStyle())
         }
-//        .frame(width: 30 , height: 30)
-        
+//        .frame(width: 30, height: 30)
     }
 }
 

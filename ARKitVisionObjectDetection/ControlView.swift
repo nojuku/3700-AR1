@@ -32,7 +32,7 @@ struct ControlView: View {
             
             .frame(maxWidth: 500)
             .padding(10)
-            .background(Color.black.opacity(0.25))
+//            .background(Color.black.opacity(0.25))
         }
         }
     }

@@ -24,11 +24,16 @@ var ageGroups: [String: Int] = ["0-2": 0,
                                 "60-100": 7]
 var anchorNames = [Int]()
 
-var anchorPhones = [Int: Int]()
 
-var anchors = [ARAnchor]()
+var anchorPhones = [ARAnchor: Int]()
+
+var observationsDict = [VNDetectedObjectObservation: Int]()
+
 
 var threshold = 1.0
+
+
+var trackingFailedForAtLeastOneObject = false
 
 //ARanchor subclass with # of phones
 class AgeAnchor: ARAnchor {
@@ -51,6 +56,11 @@ class AgeAnchor: ARAnchor {
 //
 //
 //}
+
+class VNSimpleFaceAgeObservation: VNDetectedObjectObservation {
+    var anchor = ARAnchor(name: "Observation Anchor", transform: simd_float4x4())
+    var phones = 0
+}
 
 // ARSCNViewDelegate describes renderer
 class ViewController: UIViewController, ARSCNViewDelegate {
@@ -195,42 +205,79 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
-        let numOfPhones = anchorPhones[Int(anchor.name!)!]
+        // how many phones for current anchor
+        let numOfPhones = anchorPhones[anchor]!
+
         // print(numOfPhones!)
-        print("anchor name")
-        print(anchor.name!)
+        print("Anchor added")
         var offset = 0.0
         // Add phone models display to the anchor
-        for _ in 1...numOfPhones! {
-            let mobileScene = SCNScene(named: "art.scnassets/IPhoneSE1.dae")
-            guard let sceneNode = mobileScene?.rootNode.childNode(withName: "Phone", recursively: true) else {
-                fatalError("model not found")
+        for _ in 1...numOfPhones {
+            DispatchQueue.main.async {
+                let mobileScene = SCNScene(named: "art.scnassets/IPhoneSE1.dae")
+                guard let sceneNode = mobileScene?.rootNode.childNode(withName: "Phone", recursively: true) else {
+                    fatalError("model not found")
+                }
+                let factor = 0.005
+                sceneNode.scale.x = sceneNode.scale.x * Float(factor)
+                sceneNode.scale.y = sceneNode.scale.y * Float(factor)
+                sceneNode.scale.z = sceneNode.scale.z * Float(factor)
+                let material = SCNMaterial()
+                material.locksAmbientWithDiffuse = true
+                material.isDoubleSided = false
+                material.ambient.contents = UIColor.white
+                material.diffuse.contents = UIImage(named: "texture.jpeg")
+                sceneNode.geometry?.materials = [material]
+                sceneNode.position.x = sceneNode.position.x + Float(offset)
+                let sceneNodeCpy = sceneNode.clone()
+                offset = offset + 0.05
+                node.addChildNode(sceneNodeCpy)
             }
-            let factor = 0.01
-            sceneNode.scale.x = sceneNode.scale.x * Float(factor)
-            sceneNode.scale.y = sceneNode.scale.y * Float(factor)
-            sceneNode.scale.z = sceneNode.scale.z * Float(factor)
-            let material = SCNMaterial()
-            material.locksAmbientWithDiffuse = true
-            material.isDoubleSided = false
-            material.ambient.contents = UIColor.white
-            material.diffuse.contents = UIImage(named: "texture.jpeg")
-            sceneNode.geometry?.materials = [material]
-            sceneNode.position.x = sceneNode.position.x + Float(offset)
-            offset = offset + 0.05
-            node.addChildNode(sceneNode)
         }
     }
+    
+    
+    var observationsToTrack = [VNDetectedObjectObservation]()
+    
 
     //Tells the delegate that the renderer has cleared the viewport and is about to render the scene.
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         
-        
         guard detectRemoteControl,
             let capturedImage = sceneView.session.currentFrame?.capturedImage
             else { return }
+
+        // perform face trackings from previous frame to current frame
+        var trackingRequests = [VNRequest]()
         
-        // used code template from Process Detections - TODO: into a function
+        let requestHandler = VNSequenceRequestHandler()
+        for observation in observationsToTrack {
+            print("Setting up round of tracking")
+            let faceTrackingRequest = VNTrackObjectRequest(detectedObjectObservation: observation)
+            trackingRequests.append(faceTrackingRequest)
+        }
+        do {
+            try requestHandler.perform(trackingRequests, on: capturedImage)
+        } catch {
+//            trackingFailedForAtLeastOneObject = true
+            print("Tracking failed")
+        }
+        
+        // update tracking requests to current frame observations
+        var updatedObservationsToTrack = [VNDetectedObjectObservation]()
+        for processedRequest in trackingRequests {
+            guard let results = processedRequest.results as? [VNObservation] else {
+                print("couldnt extract tracking result")
+                continue
+            }
+            guard let observation = results.first as? VNDetectedObjectObservation else {
+                print("couldnt extract tracking result 2")
+                continue
+            }
+            updatedObservationsToTrack.append(observation)
+        }
+        observationsToTrack = updatedObservationsToTrack
+        
         
         // set up and perform requests for face rectangle detection
         let faceDetection = VNDetectFaceRectanglesRequest()
@@ -240,13 +287,118 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("error on face detection results")
             return }
         
-        // for each face set up ARkit anchor + detect age
+        
         for observation in results {
-           
+            
+            //let observation2 = observation as! VNDetectedObjectObservation
+            print("Iteraitng face observations")
+            // ignore new observation if it is too close to the existing one
+            let thresh = 0.05
+            let position = CGPoint(x: observation.boundingBox.midX, y: observation.boundingBox.midY)
+            if observationsToTrack.isEmpty {
+                // detect age for new face
+                print("Checking age..")
+                let image = CIImage(cvPixelBuffer: capturedImage)
+                var ageBin:String = ""
+                let imageRequestHandler = VNImageRequestHandler(ciImage: image.cropped(to: observation.boundingBox))
+                do {
+                    try imageRequestHandler.perform([ageDetectionRequest])
+                    guard let results = ageDetectionRequest.results else {return}
+                    var confidence:Float = 0
+                    
+                    // iterate over age bins for one observtaion and find highest confidence
+                    for item in results where item is VNClassificationObservation {
+                        let item2 = item as? VNClassificationObservation
+                        guard let confidence2 = item2?.confidence else {continue}
+                        if confidence2 > confidence {
+                            confidence = confidence2
+                            guard let ageBin2 = item2?.identifier else {continue}
+                            ageBin = ageBin2
+                        }
+                    }
+                } catch {
+                    print("Failed to perform age detection request.")
+                }
+                observationsDict[observation] = ageGroups[ageBin] ?? 0
+                observationsToTrack.append(observation)
+            } else {
+                for item in observationsToTrack {
+                    let diffX = item.boundingBox.midX-position.x
+                    let diffY = item.boundingBox.midX-position.y
+                    if diffX < CGFloat(thresh) && diffY < CGFloat(thresh) {
+                        print("Face is too close to previously tracked")
+                        continue
+                    } else {
+                        // detect age for new face
+                        print("Checking age2..")
+                        let image = CIImage(cvPixelBuffer: capturedImage)
+                        var ageBin:String = ""
+                        let imageRequestHandler = VNImageRequestHandler(ciImage: image.cropped(to: observation.boundingBox))
+                        do {
+                            try imageRequestHandler.perform([ageDetectionRequest])
+                            guard let results = ageDetectionRequest.results else {return}
+                            var confidence:Float = 0
+                            
+                            // iterate over age bins for one observtaion and find highest confidence
+                            for item in results where item is VNClassificationObservation {
+                                let item2 = item as? VNClassificationObservation
+                                guard let confidence2 = item2?.confidence else {continue}
+                                if confidence2 > confidence {
+                                    confidence = confidence2
+                                    guard let ageBin2 = item2?.identifier else {continue}
+                                    ageBin = ageBin2
+                                }
+                            }
+                        } catch {
+                            print("Failed to perform age detection request.")
+                        }
+                        observationsDict[observation] = ageGroups[ageBin] ?? 0
+                        observationsToTrack.append(observation)
+                    }
+                }
+            }
+            
+//
+//            var observationsDict = [UUID: [ARAnchor: Int]]()
+//
+//
+//            observationsDict[observation.uuid] = Int(ageBin)
+//            observationsToTrack.append(observation)
+//
+//            observation.
+//
+            
+  
+            
+//            // save # of phones to array
+//            var name = 0
+//            for item in anchors{
+//                name = index(ofAccessibilityElement: item)
+//            }
+//            // set phone count for an anchor
+//            anchorPhones[name] = ageGroups[ageBin] ?? 0
+//            let anchor = ARAnchor(name: String(name), transform: result.worldTransform)
+//
+//
+//            for anchorItem in anchors {
+//                let location = simd_make_float3(anchorItem.transform.columns.3)
+//            }
+//            //TODO : add only if there isnt an anchor around those coords
+//            sceneView.session.add(anchor: anchor)
+//            anchors.append(anchor)
+            //detectRemoteControl = false
+        }
+    
+        for anchor in sceneView.session.currentFrame!.anchors {
+            sceneView.session.remove(anchor: anchor)
+        }
+        
+        // for all tracked faces transform coords to XYZ
+        for observation in observationsToTrack {
             guard let currentFrame = sceneView.session.currentFrame else { continue }
-           // print("observations")
             let fromCameraImageToViewTransform = currentFrame.displayTransform(for: .portrait, viewportSize: viewportSize)
             let boundingBox = observation.boundingBox
+            
             let viewNormalizedBoundingBox = boundingBox.applying(fromCameraImageToViewTransform)
             let t = CGAffineTransform(scaleX: viewportSize.width, y: viewportSize.height)
             // Scale up to view coordinates
@@ -258,61 +410,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let results = sceneView.hitTest(midPoint, types: .featurePoint)
             guard let result = results.first else { continue }
             
-            
-            
-            //detectRemoteControl = false
-            
-            // get current frame
-            let image = CIImage(cvPixelBuffer: capturedImage)
-            var ageBin:String = ""
-            // create handler for age detection, pass the image cropped to face bounding box
-            let imageRequestHandler = VNImageRequestHandler(ciImage: image.cropped(to: observation.boundingBox))
-            do {
-                // perform age detection
-                try imageRequestHandler.perform([ageDetectionRequest])
-                guard let results = ageDetectionRequest.results else {return}
-                var confidence:Float = 0
-
-                
-                // iterate over age bins for one observtaion and find highest confidence
-                for item in results where item is VNClassificationObservation {
-                    let item2 = item as? VNClassificationObservation
-                    guard let confidence2 = item2?.confidence else {continue}
-                    if confidence2 > confidence {
-                        confidence = confidence2
-                        guard let ageBin2 = item2?.identifier else {continue}
-                        ageBin = ageBin2
-                    }
-                }
-                
-            } catch {
-                print("Failed to perform age detection request.")
-            }
-            // save # of phones to array
-            var name = 0
-            for item in anchors{
-                name = index(ofAccessibilityElement: item)
-            }
-            // set phone count for an anchor
-            anchorPhones[name] = ageGroups[ageBin] ?? 0
-            let anchor = ARAnchor(name: String(name), transform: result.worldTransform)
-            let thislocation = simd_make_float3(anchor.transform.columns.3)
-            // check distance from existing anchors
-            print("current anchor location")
-            print(thislocation.x)
-            print(thislocation.y)
-            print(thislocation.z)
-            
-            for anchorItem in anchors {
-                let location = simd_make_float3(anchorItem.transform.columns.3)
-            }
-            //TODO : add only if there isnt an anchor around those coords
+            let anchor = ARAnchor(name: "new anchor", transform: result.worldTransform)
+            anchorPhones[anchor] = observationsDict[observation]
             sceneView.session.add(anchor: anchor)
-            anchors.append(anchor)
-            detectRemoteControl = false
         }
-    
-        
         
 //        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: capturedImage, orientation: .leftMirrored, options: [:])
 //
@@ -395,9 +496,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction private func didTouchResetButton(_ sender: Any) {
 //        volume = 0.0
-        anchorNames = [Int]()
-        anchorPhones = [Int: Int]()
-        anchors = [ARAnchor]()
+//        anchorNames = [Int]()
+//        anchorPhones = [Int: Int]()
+//        anchors = [ARAnchor]()
         resetTracking()
     }
 }

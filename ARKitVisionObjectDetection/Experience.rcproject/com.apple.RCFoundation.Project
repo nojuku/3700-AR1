@@ -1,0 +1,397 @@
+{
+  "__content" : [
+    {
+      "scenes" : [
+        {
+          "__content" : [
+            {
+              "arAnchorSpecification" : {
+                "alignment" : "horizontal",
+                "name" : "surface"
+              },
+              "behaviors" : [
+
+              ],
+              "gravity" : [
+                0,
+                -9.8000001907348633,
+                0
+              ],
+              "identifier" : "F9610871-0955-494F-A5C3-51D1A281BAB3",
+              "material" : "concrete",
+              "overrides" : {
+                "children" : {
+                  "0BA980C8-BB60-4634-B432-106CA2C54C4B" : null,
+                  "0BD5D1A9-B248-43F1-8A4D-7923A70997C5" : null,
+                  "0CA72A1E-EE30-460C-B171-ADD4194AED9C" : null,
+                  "0CB182FA-9B8E-49AB-BEB3-F6BE9602D03D" : null,
+                  "1A137CF2-0180-4AF8-9803-C36B7B35372C" : null,
+                  "01BCEA89-D092-48BD-A1EE-5C2215730301" : null,
+                  "1DD84D31-9D69-4350-97DD-8C4A6B91BDF9" : null,
+                  "1E06B3A3-6350-4745-B173-87C355543A39" : null,
+                  "1E31D131-6FC2-49C4-8435-0716E71C1F09" : null,
+                  "1FC65EED-2303-430A-BFD0-88BB483B549E" : null,
+                  "2A78D855-F5AD-491B-997E-58BF3FFF88B7" : null,
+                  "2BD50EDA-1CB3-49B3-A0C8-35E92B929FEF" : null,
+                  "2EF5411C-23A2-41EF-A618-F13594C52E37" : null,
+                  "2F572158-006D-47D2-9301-ED243C4C6AAC" : null,
+                  "3AC31662-DB25-4BAD-8AF4-C02EB336B43B" : null,
+                  "3BAA3068-5B08-4A9D-90B6-8DE5616479F2" : null,
+                  "3C611AAF-6953-44D7-8C47-BD3B0F332B2A" : null,
+                  "3CB153D6-6609-45E4-B4EE-0D8974FD88FA" : null,
+                  "3D2C1DC3-AE67-4F00-96BE-49BF13A8D14B" : null,
+                  "3D8E1927-6D22-4143-9184-2E4B5252A03F" : null,
+                  "3EB9325B-B862-4948-B19E-C963335C42D4" : null,
+                  "3F44813D-D785-45C6-BDFE-AA3292C0D91E" : null,
+                  "4A3EF945-FD56-4576-932C-AFDBCB047DFF" : null,
+                  "4A42DB36-8FCF-49D1-AF3B-EA71E439A2D4" : null,
+                  "4A213441-135C-450E-8EF8-1A4EAB267C1D" : null,
+                  "4AB81A31-8ACA-4E38-8095-4527D2C61E4D" : null,
+                  "4ABED23E-814E-4E0F-B64A-30E2579985A0" : null,
+                  "4C064542-7677-4E46-A09E-4ECAD2C2E248" : null,
+                  "4CF8D1C9-2680-4104-B0F2-C78702897429" : null,
+                  "4D410C68-529A-41FB-8C67-FE6C233960EA" : null,
+                  "4EEF9C54-D816-4BEB-AB09-D905FB9CD292" : null,
+                  "04F723D6-B1A9-49D4-BAB5-B18A987F5071" : null,
+                  "4F212125-C494-42E9-A3A9-012DD352DF33" : null,
+                  "4F988850-2608-4A71-B726-999D867835B4" : null,
+                  "4FE13A7C-EE41-4903-A41B-3594F16263E6" : null,
+                  "5A545798-59FB-42F9-9378-53F06634A477" : null,
+                  "5B18381B-D889-44F0-A5C2-46D56067A7DA" : null,
+                  "5C3F68CB-D8B7-41AE-9BCB-F52562C1EEFC" : null,
+                  "5C7996F4-FFF2-4ACE-A289-1F71EC2194C7" : null,
+                  "5D3A9AAB-FADD-453C-876A-9E804F94E750" : null,
+                  "5E2D30AA-DE46-4FE3-9DB2-8242A21C8F5A" : null,
+                  "5E3E4A5A-1484-4D1F-A5AC-67FCC7C114FB" : null,
+                  "6AEF91DE-F270-4DF9-B1AD-79BC55080C21" : null,
+                  "6B744C91-6485-43AF-9985-118E313732AA" : null,
+                  "6E61E0B1-5B52-4AF0-B287-806E4BCF8811" : null,
+                  "7A94FAE2-B9E1-4988-BE75-4ED808F43D7E" : null,
+                  "7AEB24F5-B5BC-431F-945B-70D860CAE692" : null,
+                  "7B401589-F927-4C15-877B-55A585764B70" : null,
+                  "7BA48EEC-D8C7-4664-A3A8-3B503A1B35B5" : null,
+                  "7CEBCA2F-4863-490F-911D-4AF54588A179" : null,
+                  "7DF5D45C-53B7-4E75-BA21-43F2DCA95059" : null,
+                  "7F5F1ADC-E5E4-4EF5-A5B5-FC43B071FFA5" : null,
+                  "7F27E35C-7C0E-44AE-B82C-21F9F86BB87E" : null,
+                  "8B7CF312-B9B9-460E-A6F1-7FC74714958E" : null,
+                  "8B8FFF98-AE7E-4ABA-8080-FA2BFBF76A99" : null,
+                  "8CE65857-2546-4EDE-AE9E-3CC9A134B6F9" : null,
+                  "8F63BE47-A35F-4169-AE1D-09BEEE3A1C58" : null,
+                  "8FC5DB11-06C6-42DE-B84A-4EF688A078AB" : null,
+                  "9AC1AF1B-1A4E-4001-9FE4-3479A52A0AC1" : null,
+                  "9ADD32BA-FA0F-41AB-8678-5AC3638AE56A" : null,
+                  "9DD841C2-1593-4E5E-881F-3B9E4F36DDC5" : null,
+                  "12BEBDA3-D5DE-40D6-B201-0064FB9AAD3E" : null,
+                  "21BAEF93-7F0B-4025-9E42-9B25B94A2FB9" : null,
+                  "23D080DD-67A3-4611-852F-C3DE785F5538" : null,
+                  "27BE0FF2-3AF9-4BE3-B444-07CDE87252F1" : null,
+                  "27FCB642-8D52-4919-A060-04AE0BDEC398" : null,
+                  "31B4EABE-9550-4C7D-A8F2-9ABE5B3DDA02" : null,
+                  "32A38EC1-155B-40CC-868B-86B20F620583" : null,
+                  "32F92506-D852-4098-870F-0F9C0AB592EB" : null,
+                  "35B98F97-3333-412F-B23B-87C912B0CD7F" : null,
+                  "41C567DA-FB6B-4F4B-97E7-302E5049A961" : null,
+                  "42A56DFF-2A9A-4D4D-AEE3-0871C58638B7" : null,
+                  "52DC36B4-43B3-404C-9F2C-F7FE7CD61298" : null,
+                  "54CB5430-7800-4E28-9996-5A3523325739" : null,
+                  "55F2B7E2-9695-4785-8A2F-E263F578B241" : null,
+                  "57A35CC1-3B0E-4B28-9770-B9FDB7395E6F" : null,
+                  "60E6CED3-4D25-44FA-BB82-A6421D65C0EA" : null,
+                  "65BD134A-25E0-45CF-BCDC-D4D26815F938" : null,
+                  "68C3180F-5122-4842-BA66-B2B3148533A2" : null,
+                  "69C36A73-E190-42AC-A384-CE514FAEE402" : null,
+                  "70CAFA9E-829B-4B38-939F-491AA174E948" : null,
+                  "73ADFFF4-EE13-4762-BB52-AC084C254AEF" : null,
+                  "73C8821E-C2AA-4E35-8332-DAAB19AB2774" : null,
+                  "77C0FB33-974D-47F0-AF8C-6312E1B272B1" : null,
+                  "80B9958F-AD46-42B9-92FA-2AFB696860BA" : null,
+                  "81E7919A-D57C-44FE-81F1-65B7F8F57569" : null,
+                  "81EF1036-4111-4960-8F4D-7FC72C730BB7" : null,
+                  "83BE0BAA-53D0-493F-A485-6624B3394ED9" : null,
+                  "92BE04B3-C831-4DA0-96A6-320B3042A3C2" : null,
+                  "95C5D96C-D154-46A8-B0A2-035E3155AD80" : null,
+                  "98BC7276-130F-42C2-81BF-4235A5173AE5" : null,
+                  "98F9EB10-D03E-4104-9B15-C49928A4A2B0" : null,
+                  "118C6627-2594-4137-A1B7-C9DC2ACD3563" : null,
+                  "144B2D0B-840A-4D36-8682-B24587CF9374" : null,
+                  "148E3996-BD56-494B-8A66-3600A8064D70" : null,
+                  "155EA87A-D0AD-41A8-800B-A59DC9B6146F" : null,
+                  "225BE555-4119-4EC0-85F9-5A3A0B7C7553" : null,
+                  "246DEADE-B614-4631-B5DA-418DA9FA1EF2" : null,
+                  "325B65C7-E6B1-442F-9D0A-EBB38D8A82BC" : null,
+                  "378F26B5-1088-426B-A057-642CA3106F49" : null,
+                  "407B3163-0BFD-4FCA-BE72-E96934F03AB1" : null,
+                  "442C8A9E-DDF2-46AE-8848-021DFE6E8EA0" : null,
+                  "466B9014-9B2C-4A42-B23B-A32648F6486F" : null,
+                  "490E4AE5-096A-451D-9606-3D36048C542D" : null,
+                  "530DECF6-349A-4A0F-A1BD-F0D42BF512DF" : null,
+                  "592E6A28-CF82-464D-A587-BCAEF75967EE" : null,
+                  "616CE479-0988-43C0-B977-27A8C9D757F0" : null,
+                  "631D322E-06F4-4ED0-A213-BBDB1435CC05" : null,
+                  "632E476F-1E55-4E30-9723-1C51DD2E8B89" : null,
+                  "640F2080-24A7-488E-9ABA-C45F9D1B384C" : null,
+                  "704E26F2-E44B-45F7-B323-3399D749854D" : null,
+                  "729A606B-D4AD-44FF-BBD0-38050EFFCFBE" : null,
+                  "809C88B9-BBB3-46AA-AABC-B315C5661108" : null,
+                  "861BA930-EB4B-42FE-B051-BD9DFC824139" : null,
+                  "882EB051-0C16-4384-AB8D-5EFCFD8B0A63" : null,
+                  "936EAF72-3348-4918-BBC9-0A2958EF5306" : null,
+                  "1117BA10-A847-418D-A833-3E598F493C61" : null,
+                  "1432C9AE-8E7C-4BBC-81F3-CB3BA01F2A9B" : null,
+                  "3615D2E8-2373-45FB-ADF8-183958F3E01F" : null,
+                  "4349ECA4-35A2-4857-B182-5F2E3F4C5321" : null,
+                  "4752FCF4-44D0-4350-AAA7-E4ED38FEBF1F" : null,
+                  "5820CE4F-3870-448B-A319-4090E02D323C" : null,
+                  "6320FE90-6CF1-42F9-8F3E-31C9BA1F8DE8" : null,
+                  "7719F90D-2953-4645-8138-F537C336F276" : null,
+                  "8522A2B3-A0C3-44D2-84A5-85DD2C3AF10A" : null,
+                  "8743A1AB-1B92-41C1-B6B6-780DD36E48D5" : null,
+                  "9802CEBE-FBED-4091-B9E3-C76B89F1E4BB" : null,
+                  "14891DD4-6F2B-4E0C-B61E-52B56CB10F09" : null,
+                  "25155BB4-6B31-48DE-9D53-B5B654515980" : null,
+                  "28028F98-E890-4A78-8908-3E3EC46440CA" : null,
+                  "46405D86-3132-412B-9693-7658B395DD90" : null,
+                  "48213B30-83AE-4E53-AA92-3B197AC74E63" : null,
+                  "52768B80-3230-4D23-B71B-930922BC6CA2" : null,
+                  "56685BA5-E28D-4AC7-9043-30F671177306" : null,
+                  "72476DFE-849F-47E5-88FA-97119721F096" : null,
+                  "72757EA3-BE02-4754-95E8-D99F4A5B0A4D" : null,
+                  "73049EC2-5827-4C69-97D8-F89CC323027D" : null,
+                  "114605EA-1DA3-43B8-BEF1-B201E6E1CAC4" : null,
+                  "255264C9-781A-486A-A62C-6BE6FACDDA25" : null,
+                  "374285ED-D8D6-4DF9-91B2-18FE8D07B27C" : null,
+                  "619289B9-A2EC-4113-8EC7-7DBE8D4FBDE7" : null,
+                  "665916EB-C60E-4D69-862A-E607975A7BE9" : null,
+                  "690867C8-1924-4098-BE3F-9F75D36C9059" : null,
+                  "847870B7-FDA0-4411-95A6-44AFE887837E" : null,
+                  "72356448-CE19-4F34-878F-2AB09D2E9196" : null,
+                  "A1A83EB3-F759-45AC-B76C-70C43E144B92" : null,
+                  "A9D6EC8A-2B50-4D0C-A5E1-0EE9B6AB9376" : null,
+                  "A87B862C-230F-405E-89DB-6C656EDF831E" : null,
+                  "A94DB3EC-B75D-402C-BD3D-4B7386A5AE7C" : null,
+                  "A582EBA6-B296-4AAB-B08B-EBF6A05EC6CE" : null,
+                  "A756EE46-D444-472B-863D-5F2481A7F412" : null,
+                  "A1833DED-2D2C-49F9-B8B4-134A12C29956" : null,
+                  "A1892CB6-4A5C-4F65-98D0-14CD904A8BA3" : null,
+                  "A7612BD0-45BA-47A4-8E38-738D3E926AD7" : null,
+                  "A542478E-0B0E-4285-B665-9B00B2ECBC72" : null,
+                  "A8920618-0B7A-4C28-8F74-A76181D9BFD5" : null,
+                  "AA58749B-474B-4DE5-9A9C-B5BAED41445C" : null,
+                  "ABF63B54-4D94-4431-B1D8-B1286D74217C" : null,
+                  "AD3D406B-F43C-4CC1-8921-86330CD46562" : null,
+                  "AD79E1DA-E0AE-419D-8E75-534A17DE983C" : null,
+                  "ADA6AC68-DE82-4F64-BAA9-E8C8E56DD982" : null,
+                  "AE8F9D94-580E-4CD3-BFFD-CBC632BBD3D2" : null,
+                  "AEDCB1C8-35F0-4042-A541-E30B1ED6B848" : null,
+                  "B1DF7053-57CF-435E-A0D8-CD435E87825C" : null,
+                  "B1E05B15-1996-4A4B-A700-B8B8FD7DD0EE" : null,
+                  "B4EBB1B5-859E-4751-B6CD-2C1E75B4A6B0" : null,
+                  "B5D7E001-0C8B-4542-83A9-BADD093700E9" : null,
+                  "B6C75F9D-612D-4718-9A1F-CFF9C4301C87" : null,
+                  "B89AEE41-A3AD-4473-BCE2-EFAE63F33239" : null,
+                  "B91C7CA3-4AB1-4253-9A84-07383168A8A8" : null,
+                  "B546C480-3F5D-4EB7-8C12-AF5B97C55DD3" : null,
+                  "B326922C-6603-4C5A-A8B9-5F818ECF124B" : null,
+                  "BC5D90C4-A151-4140-A197-2CD327AF609F" : null,
+                  "BDBD61AD-6045-4A05-ACEB-5A5894B0FF9A" : null,
+                  "BE6A6D15-EC3F-444A-8110-9AD89BC560BC" : null,
+                  "BEF05315-4B41-4903-B794-66E7E6E7F7D6" : null,
+                  "C0DDD303-F108-4042-9C13-1D3027BC3EAF" : null,
+                  "C3D70FA7-B802-4573-806E-8C10C89A6185" : null,
+                  "C6A59637-E7E1-456D-82B7-AB4E78D53823" : null,
+                  "C920A6F6-22E4-44AA-BB5D-78F99DAC122F" : {
+                    "overrides" : {
+                      "arguments" : [
+                        [
+                          "item",
+                          {
+                            "typeName" : "String",
+                            "value" : "Drum Kit"
+                          }
+                        ],
+                        [
+                          "style",
+                          {
+                            "typeName" : "String",
+                            "value" : "Stylized"
+                          }
+                        ]
+                      ],
+                      "children" : {
+                        "item" : {
+                          "overrides" : {
+                            "factory" : null,
+                            "runtimeAttributes" : [
+                              [
+                                "RuntimeIdentifier",
+                                {
+                                  "typeName" : "UUID",
+                                  "value" : "0432C1FC-B1C7-449A-A5BA-A90CA3E95448"
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      },
+                      "factory" : {
+                        "identifier" : "com.apple.rc.af.DrumKit.34073786-6811-4fe2-ad62-923f6d7c7012",
+                        "version" : "1.0"
+                      },
+                      "runtimeAttributes" : [
+                        [
+                          "RuntimeIdentifier",
+                          {
+                            "typeName" : "UUID",
+                            "value" : "9F289792-96C2-4B57-B478-849CBFBC84F1"
+                          }
+                        ]
+                      ]
+                    },
+                    "transform" : {
+                      "matrix" : [
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1
+                      ]
+                    }
+                  },
+                  "C4863ACB-375C-43AF-ACC1-B03EF7CC6822" : null,
+                  "C96423ED-603A-4F1A-8A01-74AFD6EBBA77" : null,
+                  "C2061172-4C2B-4F3A-9E10-828FE79AC198" : null,
+                  "CB6EFC41-4155-4291-8B38-F024EB0EFCC4" : null,
+                  "CC96EA47-3A65-4FA2-A776-DDAF41E60022" : null,
+                  "CCBBED45-F7C8-48C9-8659-2588200592EF" : null,
+                  "CFFC7F07-837F-40AB-91AE-0CCA4AE06D26" : null,
+                  "D01B82FB-059B-46EE-AFE4-9150A32CF629" : null,
+                  "D5CB2B37-5541-4135-A45F-41F1537CACFD" : null,
+                  "D6C9A3C9-A675-4437-8D38-070CFFAFE950" : null,
+                  "D9CAB711-256B-411E-9765-E5BCBBD7A67D" : null,
+                  "D22C7F8D-4645-4FCB-ABF4-0DB9825A3FF3" : null,
+                  "D24A9943-4330-425F-A904-85F5832D76EA" : null,
+                  "D30A4EA9-D843-4B29-8B52-A1F2543A0A4D" : null,
+                  "D150A4ED-D2C5-4C34-ABFA-0BF85A917642" : null,
+                  "D614A7BB-908A-4F58-BEBC-4FBEE307CCD0" : null,
+                  "D777A7B0-5DD8-4722-A2CD-24F1A806C120" : null,
+                  "D79669C9-A2B0-42B7-B1BE-AD41842537E8" : null,
+                  "DAA1BF63-82C5-4FB0-AE9F-7F8CC15FA3EA" : null,
+                  "DB6D1905-FCDA-4624-92CA-C4E51DB57E85" : null,
+                  "DBC6F34B-829C-4E35-8BAD-887DEB2D67CC" : null,
+                  "DD36D249-2383-410D-BE6F-9448EE16B10E" : null,
+                  "E0B1B731-42A6-43EE-AF8C-A663CAA0F918" : null,
+                  "E3A674AE-8705-4E6C-AA84-FB503285208A" : null,
+                  "E4F1B868-3ACD-4324-8E8C-A232DA3EF4A9" : null,
+                  "E26E6B44-4F9C-427C-BD87-62160CA19CDA" : null,
+                  "E03837F7-9A9C-4A69-827B-73DF263F7244" : null,
+                  "EA2D406E-59DD-43E9-A276-D54E10C4146B" : null,
+                  "EAFCCFFD-0251-433B-9B32-E3319A74CACD" : null,
+                  "EB01E4F8-270D-4849-A8F4-F539AEAEC96D" : null,
+                  "EB009B96-47A5-4CBE-A81E-4DE25832BE70" : null,
+                  "EC77E278-C5F6-41D4-8AB0-B4DF9A3C1E49" : null,
+                  "ECAC286B-3866-4FB3-99D4-34D55E63C70B" : null,
+                  "ED13ECF5-999B-4E0E-A544-E1A6BEB6BA20" : null,
+                  "ED25B402-E018-4ABF-A3A2-5A4E8125385A" : null,
+                  "EE5BABCA-6CE1-4729-968E-B68DE37E4D55" : null,
+                  "EEB53579-2DBC-45B4-AA8F-899135303B4C" : null,
+                  "F1A9128C-FAB4-4663-8220-E126613B9517" : null,
+                  "F2DCF474-6C0B-418D-BA01-83E2319F4A1C" : null,
+                  "F3F134A4-6AF7-4D99-B0E1-F88E8A29E91F" : null,
+                  "F6D6E46F-E2D3-4F69-BFE6-90507794AF25" : null,
+                  "F8B64C09-0A54-49F2-8F21-77CE6092FCE9" : null,
+                  "F63B6D3B-D550-46B0-9BB0-54117434C557" : null,
+                  "F214BEED-8492-4287-BC09-DE385B18E1F2" : null,
+                  "F450F168-1422-4D09-977B-432CBBC594BF" : null,
+                  "F587CF7F-3BF6-4744-959D-75AD110A2F8F" : null,
+                  "F603E176-69C5-43BC-B4BF-A7B695FEE8FC" : null,
+                  "F0697FF0-02F3-46A9-9BFB-614DC83D0C4B" : null,
+                  "F869AE71-68DA-4200-AEA1-F61E7BED61A9" : null,
+                  "F8233BBF-0067-4E1B-AF7A-FD38547007AF" : null,
+                  "FB6DD396-0876-4996-97A0-E0C0C31F828A" : null,
+                  "FC06CBF8-F2B0-481D-8E75-1B02189FF9C2" : null,
+                  "FD436F23-B0BD-41DC-8251-0405E9950666" : null,
+                  "FDE7D12D-CE7F-4BEF-BB2B-20BC907DAC0B" : null,
+                  "FDFE86B8-EF23-4546-8116-E1DA6A8953B5" : null
+                },
+                "factory" : null,
+                "runtimeAttributes" : [
+                  [
+                    "isAccessibilityEnabled",
+                    {
+                      "typeName" : "Bool",
+                      "value" : false
+                    }
+                  ]
+                ]
+              },
+              "physicsMode" : "grid",
+              "title" : "Box",
+              "viewTransform" : {
+                "cameraTransform" : [
+                  -0.23838581144809723,
+                  1.1920928955078125e-07,
+                  -0.97117048501968384,
+                  0,
+                  -0.70274865627288818,
+                  0.6902090311050415,
+                  0.17249852418899536,
+                  0,
+                  0.6703106164932251,
+                  0.72360998392105103,
+                  -0.1645359992980957,
+                  0,
+                  10.258223533630371,
+                  8.4117965698242188,
+                  -0.6071549654006958,
+                  1
+                ],
+                "sceneTransform" : [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0.99999994039535522,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0.99999994039535522,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            }
+          ],
+          "__version" : 5
+        }
+      ],
+      "tags" : {
+        "__content" : [
+          {
+            "tagsStore" : {
+
+            }
+          }
+        ],
+        "__version" : 1
+      }
+    }
+  ],
+  "__version" : 1
+}

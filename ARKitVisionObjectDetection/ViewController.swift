@@ -206,7 +206,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
         // how many phones for current anchor
-        let numOfPhones = anchorPhones[anchor]!
+        guard let numOfPhones = anchorPhones[anchor]
+            else {return}
 
         // print(numOfPhones!)
         print("Anchor added")
@@ -319,7 +320,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 } catch {
                     print("Failed to perform age detection request.")
                 }
-                observationsDict[observation] = ageGroups[ageBin] ?? 0
+                let observationDowncast = observation as VNDetectedObjectObservation
+                observationsDict[observationDowncast] = ageGroups[ageBin] ?? 0
                 observationsToTrack.append(observation)
             } else {
                 for item in observationsToTrack {
@@ -335,8 +337,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         var ageBin:String = ""
                         let imageRequestHandler = VNImageRequestHandler(ciImage: image.cropped(to: observation.boundingBox))
                         do {
+                            print("about to perform")
                             try imageRequestHandler.perform([ageDetectionRequest])
                             guard let results = ageDetectionRequest.results else {return}
+                            print("performed")
                             var confidence:Float = 0
                             
                             // iterate over age bins for one observtaion and find highest confidence
@@ -352,41 +356,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         } catch {
                             print("Failed to perform age detection request.")
                         }
-                        observationsDict[observation] = ageGroups[ageBin] ?? 0
+                        let observationDowncast = observation as VNDetectedObjectObservation
+
+                        observationsDict[observationDowncast] = ageGroups[ageBin] ?? 0
                         observationsToTrack.append(observation)
                     }
                 }
             }
-            
-//
-//            var observationsDict = [UUID: [ARAnchor: Int]]()
-//
-//
-//            observationsDict[observation.uuid] = Int(ageBin)
-//            observationsToTrack.append(observation)
-//
-//            observation.
-//
-            
-  
-            
-//            // save # of phones to array
-//            var name = 0
-//            for item in anchors{
-//                name = index(ofAccessibilityElement: item)
-//            }
-//            // set phone count for an anchor
-//            anchorPhones[name] = ageGroups[ageBin] ?? 0
-//            let anchor = ARAnchor(name: String(name), transform: result.worldTransform)
-//
-//
-//            for anchorItem in anchors {
-//                let location = simd_make_float3(anchorItem.transform.columns.3)
-//            }
-//            //TODO : add only if there isnt an anchor around those coords
-//            sceneView.session.add(anchor: anchor)
-//            anchors.append(anchor)
-            //detectRemoteControl = false
         }
     
         for anchor in sceneView.session.currentFrame!.anchors {
@@ -397,8 +373,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         for observation in observationsToTrack {
             guard let currentFrame = sceneView.session.currentFrame else { continue }
             let fromCameraImageToViewTransform = currentFrame.displayTransform(for: .portrait, viewportSize: viewportSize)
+            print("before bouding box")
             let boundingBox = observation.boundingBox
-            
+            print("after bouding box")
             let viewNormalizedBoundingBox = boundingBox.applying(fromCameraImageToViewTransform)
             let t = CGAffineTransform(scaleX: viewportSize.width, y: viewportSize.height)
             // Scale up to view coordinates
